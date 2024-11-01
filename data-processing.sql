@@ -1,3 +1,5 @@
+-- 1. PROCESS: "Truth_Seeker_Dataset_with_Timestamps" Dataset
+
 -- Adjust column names by creating a new table based on TruthSeeker dataset
 CREATE OR REPLACE TABLE `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Data_TimeStamps_new` AS
 SELECT 
@@ -171,6 +173,89 @@ SELECT
   COUNT(*)
 FROM `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Data_TimeStamps_new`
 GROUP BY _3_label_majority_answer, target;
+
+-- 2. MERGE TWO DATASETS: "Truth_Seeker_Dataset_with_Timestamps" and "Features_For_Traditional_ML_Techniques"
+CREATE OR REPLACE TABLE `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL` AS
+SELECT
+  ts.*,
+  ft.id AS ft_id,  -- Keep unique ID from ft to avoid conflicts, if needed
+  ft.* EXCEPT(id, statement, BinaryNumTarget,tweet)  -- Include all other columns from ft except id, statement, BinaryNumTarget,tweet
+FROM 
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Data_TimeStamps_new` AS ts
+INNER JOIN 
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Features_Truth_Seeker_Dataset` AS ft
+ON 
+    ts.id = ft.id;
+-- The new merged dataset is named "Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL"
+
+-- 3. PROCESS: "Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL" Dataset
+
+-- Check for null values in the columns which are relevant for the analysis
+SELECT 
+  COUNTIF(majority_target IS NULL) AS majority_target_null_count,
+  COUNTIF(followers_count IS NULL) AS followers_null_count,
+  COUNTIF(friends_count IS NULL) AS friends_null_count,
+  COUNTIF(favourites_count IS NULL) AS favourites_null_count,
+  COUNTIF(statuses_count IS NULL) AS statuses_null_count,
+  COUNTIF(listed_count IS NULL) AS listed_null_count,
+  COUNTIF(BotScoreBinary IS NULL) AS BotScoreBinary_null_count,
+  COUNTIF(cred IS NULL) AS cred_null_count,
+  COUNTIF(normalize_influence IS NULL) AS normalize_influence_null_count,
+  COUNTIF(mentions IS NULL) AS mentions_null_count,
+  COUNTIF(replies IS NULL) AS replies_null_count,
+  COUNTIF(retweets IS NULL) AS retweets_null_count,
+  COUNTIF(hashtags IS NULL) AS hashtags_null_count,
+  COUNTIF(quotes IS NULL) AS quotes_null_count,
+  COUNTIF(unique_count IS NULL) AS unique_null_count,
+  COUNTIF(total_count IS NULL) AS total_null_count,
+  COUNTIF(present_verbs IS NULL) AS present_verbs_null_count,
+  COUNTIF(past_verbs IS NULL) AS past_verbs_null_count,
+  COUNTIF(adjectives IS NULL) AS adjectives_null_count,
+  COUNTIF(adverbs IS NULL) AS adverbs_null_count,
+  COUNTIF(pronouns IS NULL) AS pronouns_null_count,
+  COUNTIF(conjunctions IS NULL) AS conjunctions_null_count,
+  COUNTIF(dots IS NULL) AS dots_null_count,
+  COUNTIF(exclamation IS NULL) AS exclamation_null_count,
+  COUNTIF(questions IS NULL) AS questions_null_count,
+  COUNTIF(ampersand IS NULL) AS ampersand_null_count,
+  COUNTIF(capitals IS NULL) AS capitals_null_count,
+  COUNTIF(digits IS NULL) AS digits_null_count,
+  COUNTIF(long_word_freq IS NULL) AS long_word_freq_null_count,
+  COUNTIF(short_word_freq IS NULL) AS short_word_freq_null_count
+FROM `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+-- Result: There is no null value in all of the columns listed above.
+
+-- Round floating values in "cred" (credibility score) column and check for outliers
+SELECT 
+  cred,
+  ROUND(cred, 2) AS rounded_cred
+FROM `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+-- Result: Max value = 1.0; Min value = 0.0
+
+-- Round floating values in "normalize_influence" (score) column and check for outliers
+SELECT 
+  normalize_influence,
+  ROUND(normalize_influence, 2) AS rounded_normalize_influence
+FROM `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+-- Result: Max value = 0.21; Min value = 0.0
+
+-- Count unique values from "majority_target" column
+SELECT 
+  majority_target,
+  COUNT(*)
+FROM `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`
+GROUP BY majority_target
+HAVING COUNT(*) > 1;
+-- Result: There're 68,973 "true" (1.0) values and 65,211 "false" (0.0) values.
+
+-- Count unique values from "BotScoreBinary" column
+SELECT 
+  BotScoreBinary,
+  COUNT(*)
+FROM `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`
+GROUP BY BotScoreBinary;
+-- Result: There're 129,842 "0.0" values, indicating these are the counts where the users are not considered NOT a bot. And there're 4,342 "1.0" values representing the counts where the users are considered a bot.
+
 
 
 
