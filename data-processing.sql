@@ -256,6 +256,22 @@ FROM `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dat
 GROUP BY BotScoreBinary;
 -- Result: There're 129,842 "0.0" values, indicating these are the counts where the users are not considered NOT a bot. And there're 4,342 "1.0" values representing the counts where the users are considered a bot.
 
+-- Count tweets which have 0 total word count
+SELECT
+  id,
+  statement,
+  tweet,
+  majority_target,
+  quotes,
+  retweets,
+  total_count,
+  present_verbs,
+  capitals
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`
+WHERE total_count = 0;
+-- Result: There're 8,464 tweets with 0 total word counts. This portion accounts for approx. 6.3% of the dataset.
+
 
 
 
