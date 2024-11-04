@@ -126,6 +126,15 @@ SELECT
 FROM
   `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
 
+-- "Word_count" column
+SELECT
+  MIN(Word_count) AS min_Word_count,
+  MAX(Word_count) AS max_Word_count,
+  ROUND(AVG(Word_count), 2) AS avg_Word_count,
+  APPROX_QUANTILES(Word_count, 2)[OFFSET(1)] AS median_Word_count
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+
 -- "present_verbs" column
 SELECT
   MIN(present_verbs) AS min_present_word,
@@ -180,8 +189,100 @@ SELECT
 FROM
   `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
 
--- 
+-- "dots" column
+SELECT
+  MIN(dots) AS min_dots,
+  MAX(dots) AS max_dots,
+  ROUND(AVG(dots), 2) AS avg_dots,
+  APPROX_QUANTILES(dots, 2)[OFFSET(1)] AS median_dots
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
 
+-- "exclamation" column
+SELECT
+  MIN(exclamation) AS min_exclamation,
+  MAX(exclamation) AS max_exclamation,
+  ROUND(AVG(exclamation), 2) AS avg_exclamation,
+  APPROX_QUANTILES(exclamation, 2)[OFFSET(1)] AS median_exclamation
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+
+-- "questions" column
+SELECT
+  MIN(questions) AS min_questions,
+  MAX(questions) AS max_questions,
+  ROUND(AVG(questions), 2) AS avg_questions,
+  APPROX_QUANTILES(questions, 2)[OFFSET(1)] AS median_questions
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+
+-- "ampersand" column
+SELECT
+  MIN(ampersand) AS min_ampersand,
+  MAX(ampersand) AS max_ampersand,
+  ROUND(AVG(ampersand), 2) AS avg_ampersand,
+  APPROX_QUANTILES(ampersand, 2)[OFFSET(1)] AS median_ampersand
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+
+-- "capitals" column
+SELECT
+  MIN(capitals) AS min_capitals,
+  MAX(capitals) AS max_capitals,
+  ROUND(AVG(capitals), 2) AS avg_capitals,
+  APPROX_QUANTILES(capitals, 2)[OFFSET(1)] AS median_capitals
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+
+-- "digits" column
+SELECT
+  MIN(digits) AS min_digits,
+  MAX(digits) AS max_digits,
+  ROUND(AVG(digits), 2) AS avg_digits,
+  APPROX_QUANTILES(digits, 2)[OFFSET(1)] AS median_digits
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+
+-- "long_word_freq" column
+SELECT
+  MIN(long_word_freq) AS min_long_word_freq,
+  MAX(long_word_freq) AS max_long_word_freq,
+  ROUND(AVG(long_word_freq), 2) AS avg_long_word_freq,
+  APPROX_QUANTILES(long_word_freq, 2)[OFFSET(1)] AS median_long_word_freq
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+
+-- "short_word_freq" column
+SELECT
+  MIN(short_word_freq) AS min_short_word_freq,
+  MAX(short_word_freq) AS max_short_word_freq,
+  ROUND(AVG(short_word_freq), 2) AS avg_short_word_freq,
+  APPROX_QUANTILES(short_word_freq, 2)[OFFSET(1)] AS median_short_word_freq
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`;
+
+-- 2. ENGAGEMENT METRICS ANALYSIS
+
+-- Count tweets and group by "total_count" column
+SELECT
+  total_count,
+  COUNT(tweet)
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`
+GROUP BY total_count;
+
+-- Aggregated engagement metrics split by true/false labels
+SELECT
+  majority_target,
+  SUM(followers_count) AS total_followers,
+  SUM(friends_count) AS total_friends,
+  SUM(favourites_count) AS total_favourites,
+  SUM(statuses_count) AS total_statuses,
+  SUM(listed_count) AS total_listed
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`
+GROUP BY
+  majority_target;
 
 
 
