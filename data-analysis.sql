@@ -271,7 +271,7 @@ FROM
   `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`
 GROUP BY total_count;
 
--- Aggregated engagement metrics split by true/false labels
+-- Aggregated meta-data features split by true/false labels
 SELECT
   majority_target,
   SUM(followers_count) AS total_followers,
@@ -279,6 +279,47 @@ SELECT
   SUM(favourites_count) AS total_favourites,
   SUM(statuses_count) AS total_statuses,
   SUM(listed_count) AS total_listed
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`
+GROUP BY
+  majority_target;
+
+-- Aggregated engagement features split by true/false labels
+SELECT
+  majority_target,
+  SUM(mentions) AS mentions,
+  SUM(replies) AS replies,
+  SUM(retweets) AS retweets,
+  SUM(hashtags) AS hashtags,
+  SUM(quotes) AS quotes
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`
+GROUP BY
+  majority_target;
+
+-- Aggregated textual features split by true/false labels - Word classes
+SELECT
+  majority_target,
+  SUM(present_verbs) AS present_verbs,
+  SUM(past_verbs) AS past_verbs,
+  SUM(adjectives) AS adjectives,
+  SUM(adverbs) AS adverbs,
+  SUM(pronouns) AS pronouns,
+  SUM(conjunctions) AS conjunctions
+FROM
+  `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`
+GROUP BY
+  majority_target;
+
+-- Aggregated textual features split by true/false labels - Punctuation marks
+SELECT
+  majority_target,
+  SUM(dots) AS dots,
+  SUM(exclamation) AS exclamation,
+  SUM(questions) AS questions,
+  SUM(ampersand) AS ampersand,
+  SUM(capitals) AS capitals,
+  SUM(digits) AS digits
 FROM
   `data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL`
 GROUP BY
