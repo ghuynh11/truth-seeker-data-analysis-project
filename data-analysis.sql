@@ -297,6 +297,8 @@ FROM
 GROUP BY
   majority_target;
 
+-- 3. TEXTUAL FEATURES ANALYSIS
+
 -- Aggregated textual features split by true/false labels - Word classes
 SELECT
   majority_target,
@@ -325,6 +327,19 @@ FROM
 GROUP BY
   majority_target;
 
+-- 4. TEMPORAL ANALYSIS
+
+-- Timestamp data grouped by true/false labels
+SELECT 
+    FORMAT_DATE('%Y-%m', DATE(timestamps)) AS month, -- Groups data by month (year-month format),
+    target,
+    COUNT(*) AS tweet_count
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_ALL
+GROUP BY 
+    month, target
+ORDER BY 
+    month;
 
 
 
