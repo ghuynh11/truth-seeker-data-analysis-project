@@ -341,6 +341,116 @@ GROUP BY
 ORDER BY 
     month;
 
+-- 5. PHRASES VOLUME
+
+-- Get volume of the phrases mentioned in tweets, grouped by true/false labels
+SELECT 
+    COUNT(*) AS count, 
+    'vaccine' AS phrase,
+    BinaryNumTarget AS Label
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_with_Sentiment
+WHERE LOWER(cleaned_tweet) LIKE '%vaccine%'
+GROUP BY BinaryNumTarget
+
+UNION ALL
+
+SELECT 
+    COUNT(*) AS count, 
+    'pandemic' AS phrase,
+    BinaryNumTarget AS Label
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_with_Sentiment
+WHERE LOWER(cleaned_tweet) LIKE '%pandemic%'
+GROUP BY BinaryNumTarget
+
+UNION ALL
+
+SELECT 
+    COUNT(*) AS count, 
+    'climate change' AS phrase,
+    BinaryNumTarget AS Label
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_with_Sentiment
+WHERE LOWER(cleaned_tweet) LIKE '%climate change%'
+GROUP BY BinaryNumTarget
+
+UNION ALL
+
+SELECT 
+    COUNT(*) AS count, 
+    'gun control' AS phrase,
+    BinaryNumTarget AS Label
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_with_Sentiment
+WHERE LOWER(cleaned_tweet) LIKE '%gun control%'
+GROUP BY BinaryNumTarget
+
+UNION ALL
+
+SELECT 
+    COUNT(*) AS count, 
+    'abortion' AS phrase,
+    BinaryNumTarget AS Label
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_with_Sentiment
+WHERE LOWER(cleaned_tweet) LIKE '%abortion%'
+GROUP BY BinaryNumTarget
+
+UNION ALL
+
+SELECT 
+    COUNT(*) AS count, 
+    'hoax' AS phrase,
+    BinaryNumTarget AS Label
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_with_Sentiment
+WHERE LOWER(cleaned_tweet) LIKE '%hoax%'
+GROUP BY BinaryNumTarget
+
+UNION ALL
+
+SELECT 
+    COUNT(*) AS count, 
+    'immigration' AS phrase,
+    BinaryNumTarget AS Label
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_with_Sentiment
+WHERE LOWER(cleaned_tweet) LIKE '%immigration%'
+GROUP BY BinaryNumTarget
+
+UNION ALL
+
+SELECT 
+    COUNT(*) AS count, 
+    'fake news' AS phrase,
+    BinaryNumTarget AS Label
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_with_Sentiment
+WHERE LOWER(cleaned_tweet) LIKE '%fake news%'
+GROUP BY BinaryNumTarget
+
+UNION ALL
+
+SELECT 
+    COUNT(*) AS count, 
+    'war' AS phrase,
+    BinaryNumTarget AS Label
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_with_Sentiment
+WHERE LOWER(cleaned_tweet) LIKE '%war%'
+GROUP BY BinaryNumTarget
+
+UNION ALL
+
+SELECT 
+    COUNT(*) AS count, 
+    'covid' AS phrase,
+    BinaryNumTarget AS Label
+FROM 
+    data-analysis-portfolio-407018.Truth_Seeker_Model_Dataset.Truth_Seeker_Dataset_with_Sentiment
+WHERE LOWER(cleaned_tweet) LIKE '%covid%'
+GROUP BY BinaryNumTarget
 
 
 
