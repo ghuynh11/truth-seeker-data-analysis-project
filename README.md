@@ -64,13 +64,19 @@ Study “TruthSeeker: The Largest Social Media Ground-Truth Dataset for Real/Fak
 - **Target (True or False):** the ground truth value of statement. This was generated based on reliable source from [politifact.com](https://www.politifact.com/).
 - **BinaryNumTarget:** Binary representation of the target value (1 = True / 0 = False)
 - **Tweet:** Twitter (now called X) posts
+
+**Explaination of the evaluation process:**
 Each Tweet in the TruthSeeker dataset was evaluated was evaluated to assess how closely it alligns with the verified statement. The following label systems are used:
 - 5_label_majority_answer: Options included Agree, Mostly Agree, Disagree, Mostly Disagree, and Unrelated. This approach shows how information from the Tweets relates to the truth.
-- 3_label_majority_answer: Majority answer using 3 labels (Agree, Disagree, Unrelated) *NO MAJORITY indicates that there was no consensus when a majority answer was generated.
-→ This 5-label and 3-label answers were generated using a crowdsourcing approach through Amazon Mechanical Turk. Each tweet was evaluated by multiple human annotators who categorized it based on how it aligned with a verified statement (either true/real or false/fake). This classification provides more nuanced insights compared to a simple binary (true/false) system, allowing for a finer-grained analysis of misinformation. 
+- 3_label_majority_answer: A simplified version with Agree, Disagree, and Unrelated as the only choices.
+→ This classification provides more nuanced insights compared to a simple binary (true/false) system, allowing for a finer-grained analysis of misinformation. Meaning, it captures the complexity of real-world information, rather than reducing everything to just right or wrong.
+Why this matters:
+In many social media posts, content is not purely factual or entirely false. People mix facts with opinions, or take facts out of context, which creates ambiguity. A binary system (true vs. false) would oversimplify these cases.
+Instead, using labels like “Mostly Agree,” “Mostly Disagree,” or “Unrelated” helps us:
+- Understand how close a post is to the truth
+- Detect subtle forms of misinformation
 
-“Features_For_Traditional_ML_Techniques” dataset:
-majority_target: indicates whether the tweet conveys either true information or false information. This is determined through the crowdsourcing process mentioned above:
+- **majority_target:** indicates whether the tweet conveys either true information or false information. This is determined through the crowdsourcing process mentioned above:
 1 (or TRUE): The tweet is considered to convey true information.
 0 (or FALSE): The tweet is considered to convey false information.
 statuses_count: represents the total number of tweets (or “statuses”) a user has posted on Twitter. It includes all tweets, retweets, and replies that a user has made up to the time of data collection. This count is an indicator of the user’s activity level on Twitter.
