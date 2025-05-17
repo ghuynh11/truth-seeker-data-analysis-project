@@ -52,6 +52,18 @@ The following methodology with 6 steps are implemented for this project:
 *Source: 
 Study “TruthSeeker: The Largest Social Media Ground-Truth Dataset for Real/Fake Content” by Sajjad Dadkhah Member, IEEE, Xichen Zhang, Alexander Gerald Weismann, Amir Firouzi, Ali A. Ghorbani Senior Member, IEEE.*
 
+**Explaination of the evaluation process:**
+Each Tweet in the TruthSeeker dataset was evaluated by multiple annotators to assess how closely it alligns with the verified statement. The following label systems are used:
+- 5_label_majority_answer: Options included Agree, Mostly Agree, Disagree, Mostly Disagree, and Unrelated. This approach shows how information from the Tweets relates to the truth.
+- 3_label_majority_answer: A simplified version with Agree, Disagree, and Unrelated as the only choices.
+→ This classification provides more nuanced insights compared to a simple binary (true/false) system, allowing for a finer-grained analysis of misinformation. Meaning, it captures the complexity of real-world information, rather than reducing everything to just right or wrong.
+
+Why this matters:
+In many social media posts, content is not purely factual or entirely false. People mix facts with opinions, or take facts out of context, which creates ambiguity. A binary system (true vs. false) would oversimplify these cases.
+Instead, using labels like “Mostly Agree,” “Mostly Disagree,” or “Unrelated” helps us:
+- Understand how close a post is to the truth
+- Detect subtle forms of misinformation
+
 **Is the data ROCCC?**
 - Reliable: yes, considering the thorough ground truth verification and fact-checking process
 - Original: yes
@@ -64,49 +76,73 @@ Study “TruthSeeker: The Largest Social Media Ground-Truth Dataset for Real/Fak
 - **Target (True or False):** the ground truth value of statement. This was generated based on reliable source from [politifact.com](https://www.politifact.com/).
 - **BinaryNumTarget:** Binary representation of the target value (1 = True / 0 = False)
 - **Tweet:** Twitter (now called X) posts
+- **majority_target:** shows whether a post is true or false based on what the human reviewers (annotators) decided. It is the result of the label systems mentioned above.
+  - If most reviewers said the post agrees with the truth → majority_target = True
+  - If most said it disagrees or is misleading → majority_target = False
+  - If they couldn’t agree → it may be marked as No Majority
+This helps simplify the data for analysis by giving each post a clear true/false label.
 
-**Explaination of the evaluation process:**
-Each Tweet in the TruthSeeker dataset was evaluated was evaluated to assess how closely it alligns with the verified statement. The following label systems are used:
-- 5_label_majority_answer: Options included Agree, Mostly Agree, Disagree, Mostly Disagree, and Unrelated. This approach shows how information from the Tweets relates to the truth.
-- 3_label_majority_answer: A simplified version with Agree, Disagree, and Unrelated as the only choices.
-→ This classification provides more nuanced insights compared to a simple binary (true/false) system, allowing for a finer-grained analysis of misinformation. Meaning, it captures the complexity of real-world information, rather than reducing everything to just right or wrong.
-Why this matters:
-In many social media posts, content is not purely factual or entirely false. People mix facts with opinions, or take facts out of context, which creates ambiguity. A binary system (true vs. false) would oversimplify these cases.
-Instead, using labels like “Mostly Agree,” “Mostly Disagree,” or “Unrelated” helps us:
-- Understand how close a post is to the truth
-- Detect subtle forms of misinformation
+- **statuses_count:** represents the total number of Tweets a user has posted on Twitter. It includes all Tweets, Retweets, and Replies that a user has made up to the time of data collection. This count is an indicator of the user’s activity level on Twitter.
+- **favorites_count:** the total number of likes a user has received across all their Tweets.
+- **unique_count:** This column represents the number of unique, complex words in each tweet.
+- **total_count:** This column represents the total number of words in each tweet. It is a straightforward word count that indicates the length of the tweet.
+- **conjunctions:** words that connect phrases, clauses, or sentences to create more complex sentence structures.
 
-- **majority_target:** indicates whether the tweet conveys either true information or false information. This is determined through the crowdsourcing process mentioned above:
-1 (or TRUE): The tweet is considered to convey true information.
-0 (or FALSE): The tweet is considered to convey false information.
-statuses_count: represents the total number of tweets (or “statuses”) a user has posted on Twitter. It includes all tweets, retweets, and replies that a user has made up to the time of data collection. This count is an indicator of the user’s activity level on Twitter.
-favorites_count: the total number of likes (or favorites) a user has received across all their tweets.
-listed_count: This column indicates the number of public Twitter lists that include the user. Being listed means other Twitter users have added this account to one or more curated lists (e.g., lists for specific interests or groups), which may indicate that the user is seen as a valuable or influential source within certain topics.
-Usage
-statuses_count can provide insights into user engagement and activity, as users with a high statuses_count are often more active and may have higher visibility on the platform.
-listed_count may suggest the user’s credibility or reputation, as being added to lists is often associated with users who are recognized by others as knowledgeable or influential in specific areas.
-cred (credibility score): designed to assess a user’s perceived trustworthiness or reliability on social media. This score reflects the user’s likely credibility based on factors such as activity, influence, engagement, and other metadata. 
-Usage
-The cred column can help analyze patterns related to information reliability:
-Comparing Credibility Scores: Determine if users posting truthful information generally have higher credibility scores than those spreading misinformation.
-Feature for Predictive Modeling: Incorporate credibility as a feature in models predicting misinformation, as high credibility users are often more trusted sources.
-normalize_influence (score): represents a normalized influence score for each user. This score is calculated to reflect the user’s influence on social media, taking into account factors like follower count, engagement metrics (likes, retweets, replies), and possibly other activity indicators, then normalizing these values to make them comparable across all users in the dataset. → Ex: Think of a tweet's contents as a virus. When a person reads the tweet, they become infected — their influence probability is the chance they'll spread it to their followers.
-Usage
-Standardized Metric: By normalizing influence, this score allows for comparison of influence levels across users, regardless of absolute follower counts or raw engagement.
-Indicator of Reach and Engagement: Higher scores suggest that the user likely has a wider reach, higher engagement, or more significant impact on the platform, which can be a factor in the spread of information (or misinformation).
-unique_count: This column represents the number of unique, complex words in each tweet. Complex words typically refer to words with higher lexical difficulty, possibly based on word length or syllable count. This metric can give insight into the sophistication or readability of a tweet.
-total_count: This column represents the total number of words in each tweet. It is a straightforward word count that indicates the length of the tweet.
-Usage
-unique_count can be used to analyze the linguistic complexity of tweets, which may differ between truthful and false information. Complex language might be associated with certain types of content or persuasion techniques.
-total_count helps assess tweet length, which can influence engagement and readability. Shorter tweets are often more readable and may spread faster, while longer tweets can convey more detailed information.
-conjunctions: words that connect phrases, clauses, or sentences to create more complex sentence structures. Common conjunctions include:
-Coordinating Conjunctions: “and,” “but,” “or,” “so,” “for,” “nor,” “yet”
-Subordinating Conjunctions: “because,” “although,” “since,” “unless,” “while,” “though”
-Correlative Conjunctions: “either…or,” “neither…nor,” “not only…but also”
-Usage
-Sentence Complexity: Tweets with more conjunctions may be more complex in structure, indicating a higher level of detail or nuance.
-Tone and Argumentation: The presence of conjunctions can signify logical or persuasive language, as conjunctions are often used to connect ideas and reasons (e.g., “because,” “although”).
-Content Analysis: Misinformation content may sometimes have simpler or more repetitive sentence structures, whereas truthful content might use conjunctions to build complex, multi-part explanations.
+**Initial examination of the dataset:**
+- The data is structured in long format.
+- There is a specific ID for each Tweet, along with related information such as author, keywords, verified status of the statement, etc.
+- The Tweets are originated from the period 2008 - 2022.
+- In total there are 134,194 Tweets in the “Truth_Seeker_Dataset_with_Timestamps” dataset. → 68,973 TRUE Tweets and 65,211 FALSE Tweets
+- Multiple Tweets have the same statement which is documented in the “statement” column. This statement serves as the central theme or “ground-truth statement,” against which each Tweet’s truthfulness is assessed.
+- Despite the high credibility of the dataset, it still contains 8,464 Tweets with 0 total word counts (data extracted from the "total_count" column). This portion accounts for approx. 6.3% of the dataset.
+- Upon further examination, I noticed that the **“word_count”** column contains more correct data in relation to the tweet. The average word count of the tweets is 35. There is only one tweet with zero word count.
+
+## STEP 3: Process
+
+**Tool:** SQL
+
+**Datasets used for the analysis:**
+- Truth_Seeker_Dataset_with_Timestamps
+- Features_For_Traditional_ML_Techniques
+
+**Data format adjustment before uploading to SQL:**
+Upon uploading the datasets into SQL Big Query, there were many errors and the job couldn’t be completed.
+The dataset in CSV format has lots of blank lines which is probably the reason for the errors.
+I wrote the following Python code to delete the blank lines in the CSV file “Truth_Seeker_Dataset_with_Timestamps” and “Features_For_Traditional_ML_Techniques”: LINK to the Python code.
+
+**Documentation of further data cleaning in SQL BigQuery:** Detail SQL query in this [LINK](https://github.com/ghuynh11/truth-seeker-data-analysis-project/blob/main/data-processing.sql).
+
+## STEP 4: Analyze 
+
+### 1. Summary Statistics:
+
+[LINK](https://docs.google.com/spreadsheets/d/1gPY1wCCMnUUwVLHc2AAIKY0yB3e97cavKlU1nRhw0Bw/edit?gid=0#gid=0) to Summary Statistics table.
+
+Based on the objectives of this project, I would choose the following columns of the dataset for analysis:
+
+- **Meta-data features** (features about the users on Twitter): followers_count, friends_count, favourites_count, statuses_count, listed_count, cred (credibility score), normalize_influencen (influence score), mentions, replies, retweets, hashtags.
+- **Lexical features** (linguistic and structural features of the Tweets): unique_count, word_count, present_verbs, past_verbs, adjectives, adverbs, pronouns, conjunctions, dots, exclamation, questions, ampersand, capitals, digits, long_word_freq, short_word_freq.
+
+**General findings about meta-data features:**
+- Skewed distributions of the following features: followers_count, friends_count, favourites_count, and statuses_count. A few users have disproportionately high values. This skew affects the average values of these features, making medians more representative of the Twitter users as they are less sensitive to outliers.
+- Engagement variability: the replies and retweets features all have median value of 0. This shows that while engagement is low for many tweets, a subset receives very high engagement (e.g. max retweets 126,062), possibly indicating a small amount viral or highly discussed content in the TruthSeeker dataset.
+- Influence and Credibility: With low average values in credibility score and influence score, most users in the dataset appear to have modest credibility and influence. The maximum credibility score is 1 and maximum influence score is 0.2. This could indicate a diverse set of users, including both prominent and ordinary users on Twitter.
+- Word count is generally within the range of short-form content which is typical on Twitter, with a few longer posts (likely from users with Twitter Blue or now called X Premium).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
