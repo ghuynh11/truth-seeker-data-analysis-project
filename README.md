@@ -142,14 +142,36 @@ Based on the objectives of this project, I would choose the following columns of
 
 **Tool:** SQL, Tableau
 
+
 **Features about the users**
+
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/39879bb4-264c-4e9d-8866-dc828cd248a9" />
+
+- The bars representing true Tweets are larger than the the other bars across most of the features about the users.
+- Truthful content is associated with users who genrally have more followers, more friends, and more Tweets.
 
 
 **Engagement features**
 
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/4e683915-0031-4dac-96b3-84a33be97bcf" />
+
+- The bars representing false Tweets have higher values for most engagement features, especially in retweets and replies, indicating that false Tweets are shared more frequently than truthful ones.
+→ False content spreads wider, highlighting the viral nature of misinformation, as well as being more controversial and generating more discussions.
 
 
+**Textual features**
 
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/cc17608d-5a70-49b9-8f78-d27e16bdce25" />
+
+- Higher use of adjectives in true Tweets
+- Higher use of adverbs, conjunctions, past verbs and present verbs and pronouns in false Tweets
+
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/9baa3798-ce74-4bd9-ab09-fbb13822f4c0" />
+
+- False Tweets have more capitalized words, more exclamations and question marks than true Tweets, indicating a tendency toward emphasis, emotional and provocative language, which is common in misinformation.
+- True Tweets have more digits than false Tweets. This could suggest that truthful Tweets are more likely to have quantitative data, such as statistics or factual figures.
+
+### 3. Temporal Analysis:
 
 
 
