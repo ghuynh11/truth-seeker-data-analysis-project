@@ -87,6 +87,8 @@ This helps simplify the data for analysis by giving each post a clear true/false
 - **unique_count:** This column represents the number of unique, complex words in each tweet.
 - **total_count:** This column represents the total number of words in each tweet. It is a straightforward word count that indicates the length of the tweet.
 - **conjunctions:** words that connect phrases, clauses, or sentences to create more complex sentence structures.
+- **cred (credibility score):** designed to assess a user’s perceived trustworthiness on social media. This score based on factors such as activity, engagement, etc.
+- **normalize_influence (score):** represents a normalized influence score for each user. This score is calculated to reflect the user’s influence on social media, taking into account factors like follower count, engagement metrics (likes, retweets, replies), etc. The influence scores are adjusted so they are on the same scale across all users (normalized), making them easier to compare fairly, regardless of raw numbers like follower count or total likes.
 
 **Initial examination of the dataset:**
 - The data is structured in long format.
@@ -116,6 +118,8 @@ I wrote the following Python code to delete the blank lines in the CSV file “T
 
 ### 1. Summary Statistics:
 
+**Tool:** Spreadsheet
+
 [LINK](https://docs.google.com/spreadsheets/d/1gPY1wCCMnUUwVLHc2AAIKY0yB3e97cavKlU1nRhw0Bw/edit?gid=0#gid=0) to Summary Statistics table.
 
 Based on the objectives of this project, I would choose the following columns of the dataset for analysis:
@@ -126,8 +130,24 @@ Based on the objectives of this project, I would choose the following columns of
 **General findings about meta-data features:**
 - Skewed distributions of the following features: followers_count, friends_count, favourites_count, and statuses_count. A few users have disproportionately high values. This skew affects the average values of these features, making medians more representative of the Twitter users as they are less sensitive to outliers.
 - Engagement variability: the replies and retweets features all have median value of 0. This shows that while engagement is low for many tweets, a subset receives very high engagement (e.g. max retweets 126,062), possibly indicating a small amount viral or highly discussed content in the TruthSeeker dataset.
-- Influence and Credibility: With low average values in credibility score and influence score, most users in the dataset appear to have modest credibility and influence. The maximum credibility score is 1 and maximum influence score is 0.2. This could indicate a diverse set of users, including both prominent and ordinary users on Twitter.
+- Influence and Credibility of the users: With low average values in credibility score and influence score, most users in the dataset appear to have modest credibility and influence. The maximum credibility score is 1 and maximum influence score is 0.2. This could indicate a diverse set of users, including both prominent and ordinary users on Twitter.
 - Word count is generally within the range of short-form content which is typical on Twitter, with a few longer posts (likely from users with Twitter Blue or now called X Premium).
+
+**General findings about lexical features:**
+- Text simplicity: The tweets from the dataset tends to be formulated in short, direct language, with lower average counts of conjunctions and long words. The short word frequency is high: a tweet with approx. 35 words has about 21 short words on average.
+- Generally low frequency of question marks and exclamations.
+- Capitals and digits (numbers) appear to be used often in the tweets of the dataset. On average, a tweet with approx. 35 words has about 13 capitals and 4 numbers.
+
+### 2. Engagement Metrics Analysis:
+
+**Tool:** SQL, Tableau
+
+**Features about the users**
+
+
+**Engagement features**
+
+
 
 
 
