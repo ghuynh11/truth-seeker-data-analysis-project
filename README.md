@@ -173,10 +173,35 @@ Based on the objectives of this project, I would choose the following columns of
 
 ### 3. Temporal Analysis:
 
+**Tool:** SQL, Tableau
+
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/4ca5b974-13bc-4cde-87c4-3da94e53d8f1" />
+
+- There was a sharp rise in the volume of false Tweets around 2020, significantly outpacing the volume of true Tweets. This could be associated with major events like the COVID-19 pandemic or political events, which are often accompanied by the spread of misinformation. → This suggests that global crisis results in uncertainty that drives the consumption of unverified content.
+- From 2020 to 2022, false Tweets consistently had a higher volume than true Tweets.
+- Before 2020, true Tweets showed occasional spikes (e.g., around 2013 and 2017). These might correspond to specific political events like the Euromaidan Protests (Ukraine), U.S. Presidential Election, Brexit and social movements like #BlackLivesMatter, #MeToo.
+- True Tweets tend to have steadier growth in general, possibly due to slower spread or reliance on verified information.
+
+### 4. Sentiment Analysis:
+
+**Tool:** SQL, Python, Tableau
+
+The following steps are taken for the sentiment analysis of the Tweets:
+
+- Export dataset from SQL for sentiment analysis in Python.
+- Use the The VaderSentiment library - a sentiment analysis tool that is specifically designed for analyzing social media texts and short, informal content like Tweets, Reviews, and Comments.
+- The output includes the compound score ranging from -1 (most negative) to +1 (most positive). In order to better visualize the result, I used 3 categories for the sentiment of the Tweets: positive, negative and neutral.
+- The Python script can be viewed in this LINK.
+
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/f52ed5ba-2f80-4b3f-8bc2-1b773c265fb8" />
+
+- False Tweets show a significantly higher negative sentiment count compared to true Tweets. → Misinformation tends to evoke more negative emotions.
+- True Tweets have lower level of both positive and negative sentiments. → True content is less emotionally polarizing and relies on a more factual, neutral tone.
 
 
+**Temporal and Sentiment Trends**
 
-
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/fbd62a1c-5340-4b49-aa9a-ec10f5457dcd" />
 
 
 
