@@ -203,6 +203,60 @@ The following steps are taken for the sentiment analysis of the Tweets:
 
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/fbd62a1c-5340-4b49-aa9a-ec10f5457dcd" />
 
+**Sharp increase in the number of Tweets after 2019**
+
+- From 2020 onward, there is a significant spike in the number of Tweets across all sentiment categories.
+- This increase suggests that major global events such as the COVID-19 pandemic, political events, or social movements led to a surge in discussions on social media.
+
+**Tweets with negative sentiment dominates after 2020**
+
+- The red line in the graph above, representing negative sentiment, consistently remains higher than positive and neutral Tweets after 2020.
+- This might be due to the online discussions during this period. Because of the major global events, these discussions were largely driven by negative emotions (e.g., fear, frustration, or anger). The reasons for that could be:
+  - Misinformation about controversial topics
+  - Public reactions to crises, policies, or social issues
+
+**Tweets with positive sentiment also increases, but less than negative**
+
+- The blue line, representing positive sentiment, follows a similar upward trend but remains below the red line (negative sentiment).
+- This could indicate that while some events generated optimism and support (e.g., vaccine rollouts, political victories), the general tone of discussions leaned more in the negative direction.
+
+## STEP 5: Share conclusions
+
+This analysis of the TruthSeeker dataset reveals clear patterns in how misinformation and truthful content differ in terms of user behavior, language use, emotional tone, and temporal trends.
+
+**Tweet users and content characteristics**
+
+- True Tweets are more often posted by users with more followers and higher activity levels, suggesting that credibility is associated with more established accounts.
+- In contrast, false Tweets, though often from users with less followers, receive more engagement, particularly in retweets and replies, highlighting the viral nature of misinformation.
+
+Linguistic and Structural Features
+
+False Tweets show a higher use of emotionally charged and provocative language, including adverbs, exclamations, pronouns, capital letters, and question marks, reflecting a persuasive and reactive tone.
+
+True Tweets, on the other hand, favor more neutral and descriptive language, with a higher frequency of adjectives and numeric data, indicating a tendency toward factual reporting.
+
+Sentiment Dynamics
+
+False content is strongly associated with negative sentiment, often triggering emotional reactions such as fear, anger, or outrage.
+
+True content maintains a more balanced emotional tone, with lower extremes in both positive and negative sentiment, aligning with its more informational nature.
+
+Temporal Trends
+
+Since 2020, false Tweets have consistently outpaced true Tweets in volume, especially during periods of global crisis (e.g., the COVID-19 pandemic, political unrest), suggesting that misinformation thrives during uncertainty.
+
+Despite the rise of false content, true Tweets show steadier and more organic growth, potentially reflecting the slower spread of verified information.
+
+Key Takeaway
+Misinformation spreads faster, louder, and more emotionally, while truthful content moves steadier, quieter, and more factually. Understanding these patterns is essential for designing better detection systems, promoting credible content, and encouraging more informed online discourse.
+
+Final Insights
+
+	•	Social media sentiment has become more polarized over time, especially post-2020.
+	•	Negative sentiment dominates, indicating that users tend to engage more with controversial, alarming, or emotional content.
+	•	The rise in neutral tweets suggests a shift toward sharing factual or news-related content alongside opinion-based tweets.
+
+
 
 
 
