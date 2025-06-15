@@ -1,4 +1,4 @@
-# Truth vs. Virality: A Data-Driven Dive into the Spread of Misinformation
+# Truth vs. Virality: A Data-Driven Approach to the Spread of Misinformation
 ## Using SQL, Google Sheet and Tableau
 
 In today’s hyperconnected world, social media isn’t just a place to scroll and entertain, it’s where opinions are formed, narratives are shaped, and influence is spread. As someone who grew up with the rise of social media, I’ve come to recognize how easily misinformation can blur the line between fact and fiction.
@@ -222,48 +222,21 @@ The following steps are taken for the sentiment analysis of the Tweets:
 
 ## STEP 5: Share conclusions
 
-This analysis of the TruthSeeker dataset reveals clear patterns in how misinformation and truthful content differ in terms of user behavior, language use, emotional tone, and temporal trends.
+This analysis of the TruthSeeker dataset shows clear patterns in how misinformation and truthful content differ in terms of user behavior, language use, emotional tone, and temporal trends.
 
 **Tweet users and content characteristics**
 
 - True Tweets are more often posted by users with more followers and higher activity levels, suggesting that credibility is associated with more established accounts.
 - In contrast, false Tweets, though often from users with less followers, receive more engagement, particularly in retweets and replies, highlighting the viral nature of misinformation.
 
-Linguistic and Structural Features
+**Linguistic and structural features**
 
-False Tweets show a higher use of emotionally charged and provocative language, including adverbs, exclamations, pronouns, capital letters, and question marks, reflecting a persuasive and reactive tone.
+- False Tweets show a higher use of provocative language, including a high amount of exclamations, capital letters, and question marks.
+- True Tweets, on the other hand, have more neutral and descriptive language, with a higher frequency of adjectives and numeric data.
 
-True Tweets, on the other hand, favor more neutral and descriptive language, with a higher frequency of adjectives and numeric data, indicating a tendency toward factual reporting.
+**Sentiment and temporal trends**
 
-Sentiment Dynamics
+- Tweets sentiment has become more polarized over time, especially post-2020.
+- Since 2020, false Tweets have consistently outpaced true Tweets in volume, especially during periods of global crisis (e.g., the COVID-19 pandemic, political unrest), suggesting that misinformation thrives during uncertain period.
 
-False content is strongly associated with negative sentiment, often triggering emotional reactions such as fear, anger, or outrage.
-
-True content maintains a more balanced emotional tone, with lower extremes in both positive and negative sentiment, aligning with its more informational nature.
-
-Temporal Trends
-
-Since 2020, false Tweets have consistently outpaced true Tweets in volume, especially during periods of global crisis (e.g., the COVID-19 pandemic, political unrest), suggesting that misinformation thrives during uncertainty.
-
-Despite the rise of false content, true Tweets show steadier and more organic growth, potentially reflecting the slower spread of verified information.
-
-Key Takeaway
-Misinformation spreads faster, louder, and more emotionally, while truthful content moves steadier, quieter, and more factually. Understanding these patterns is essential for designing better detection systems, promoting credible content, and encouraging more informed online discourse.
-
-Final Insights
-
-	•	Social media sentiment has become more polarized over time, especially post-2020.
-	•	Negative sentiment dominates, indicating that users tend to engage more with controversial, alarming, or emotional content.
-	•	The rise in neutral tweets suggests a shift toward sharing factual or news-related content alongside opinion-based tweets.
-
-
-
-
-
-
-
-
-
-
-
-
+**Based on the insights above, it is clear that emotional misinformation spreads faster than facts nowadays in the digitalized world. Therefore, it is crucial to promote social media literacy in order to be more critical when receiving information from these platforms. Truth may be "quieter", but it is our shared responsibility to make it "louder".**
