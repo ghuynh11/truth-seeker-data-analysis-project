@@ -110,7 +110,7 @@ This helps simplify the data for analysis by giving each post a clear true/false
 **Data format adjustment before uploading to SQL:**
 Upon uploading the datasets into SQL Big Query, there were many errors and the job couldn’t be completed.
 The dataset in CSV format has lots of blank lines which is probably the reason for the errors.
-I wrote the following Python code to delete the blank lines in the CSV file “Truth_Seeker_Dataset_with_Timestamps” and “Features_For_Traditional_ML_Techniques”: LINK to the Python code.
+I wrote the following Python code to delete the blank lines in the CSV file “Truth_Seeker_Dataset_with_Timestamps” and “Features_For_Traditional_ML_Techniques”: [LINK](https://github.com/ghuynh11/truth-seeker-data-analysis-project/blob/main/Clean_Truth_Seeker_Dataset_With_TimeStamps.py) to the Python code.
 
 **Documentation of further data cleaning in SQL BigQuery:** Detail SQL query in this [LINK](https://github.com/ghuynh11/truth-seeker-data-analysis-project/blob/main/data-processing.sql).
 
@@ -191,7 +191,7 @@ The following steps are taken for the sentiment analysis of the Tweets:
 - Export dataset from SQL for sentiment analysis in Python.
 - Use the The VaderSentiment library - a sentiment analysis tool that is specifically designed for analyzing social media texts and short, informal content like Tweets, Reviews, and Comments.
 - The output includes the compound score ranging from -1 (most negative) to +1 (most positive). In order to better visualize the result, I used 3 categories for the sentiment of the Tweets: positive, negative and neutral.
-- The Python script can be viewed in this LINK.
+- The Python script can be viewed in this [LINK](https://github.com/ghuynh11/truth-seeker-data-analysis-project/blob/main/Sentiment_analysis_TruthSeeker_Dataset.py).
 
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/f52ed5ba-2f80-4b3f-8bc2-1b773c265fb8" />
 
