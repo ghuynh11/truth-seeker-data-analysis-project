@@ -222,6 +222,10 @@ The following steps are taken for the sentiment analysis of the Tweets:
 
 ## STEP 5: Share conclusions
 
+Tool: Tableau
+
+The insights and findings of the analysis are shared through data visualization in form of graphs and plots. I also created a Tableau dashboard which includes the graphs above. Click this [LINK](https://public.tableau.com/views/Book1_17307449975330/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link) to view the dashboard.
+
 This analysis of the TruthSeeker dataset shows clear patterns in how misinformation and truthful content differ in terms of user behavior, language use, emotional tone, and temporal trends.
 
 **Tweet users and content characteristics**
